@@ -1,6 +1,6 @@
 .PHONY : clean
 
-PG_INC_PATH=$(shell pg_config --includedir-server)
+PG_INC_PATH=$(shell /usr/pgsql-12/bin/pg_config --includedir-server)
 CPPFLAGS= -Wno-unused-variable -fPIC -Wall -g -I$(PG_INC_PATH) -I$(JDK_INCLUDE) -I$(JDK_INCLUDE)/linux/ -Ijdbc
 LDFLAGS:= $(LDFLAGS) -shared
 

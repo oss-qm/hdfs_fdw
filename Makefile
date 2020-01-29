@@ -19,6 +19,6 @@ REGRESS = datatype external mapping retrival date_comparison ldap_autentication 
 EXTENSION = hdfs_fdw
 DATA = hdfs_fdw--2.0.2.sql hdfs_fdw--2.0.3.sql hdfs_fdw--2.0.1--2.0.2.sql hdfs_fdw--2.0.2--2.0.3.sql hdfs_fdw--2.0.1.sql hdfs_fdw--2.0--2.0.1.sql hdfs_fdw--1.0--2.0.sql hdfs_fdw--1.0.sql
 
-PG_CONFIG = pg_config
+PG_CONFIG = /usr/pgsql-12/bin/pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
