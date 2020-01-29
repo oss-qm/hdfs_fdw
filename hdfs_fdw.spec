@@ -1,4 +1,5 @@
 %global sname hdfs_fdw
+%global pgmajorversion 12
 %ifarch ppc64 ppc64le
 # Define the AT version and path.
 %global atstring	at10.0
@@ -11,7 +12,6 @@ Version:	2.0.5
 Release:	1%{?dist}
 License:	BSD
 Source0:	https://github.com/EnterpriseDB/%{sname}/archive/v%{version}.tar.gz
-Patch0:		%{sname}-pg%{pgmajorversion}-makefile-pgxs.patch
 URL:		https://github.com/EnterpriseDB/%{sname}
 BuildRequires:	postgresql%{pgmajorversion}-devel
 BuildRequires:	libxml2-devel java-devel javapackages-tools
@@ -32,7 +32,6 @@ the hdfs.
 
 %prep
 %setup -q -n %{sname}-%{version}
-%patch0 -p0
 
 %build
 %ifarch ppc64 ppc64le
