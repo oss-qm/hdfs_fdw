@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SRC_VERSION="2.0.5.1"
+RPM_VERSION="$SRC_VERSION-1"
+PKGNAME="hdfs_fdw"
+SPECFILE="$PKGNAME.spec"
+PKGDIR="$HOME/rpmbuild"
+SRPM_NAME="hdfs_fdw_12"
+
+set -e
+
+rm -Rf "${PKGDIR}"
+mkdir -p "${PKGDIR}/SOURCES" "${PKGDIR}/SPECS"
+
+git archive --format tar HEAD | gzip > "${PKGDIR}/SOURCES/$PKGNAME-$SRC_VERSION.tar.gz"
+cp "$SPECFILE" "${PKGDIR}/SPECS"
+
+rpmbuild -bs "${SPECFILE}"
+
+mkdir -p ../sles12.5-pgbuild/files/src
+cp $PKGDIR/SRPMS/${SRPM_NAME}-$RPM_VERSION.src.rpm ../sles12.5-pgbuild/files/src

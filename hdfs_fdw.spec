@@ -8,10 +8,10 @@
 
 Summary:	PostgreSQL Foreign Data Wrapper (FDW) for the hdfs
 Name:		%{sname}_%{pgmajorversion}
-Version:	2.0.5
+Version:	2.0.5.1
 Release:	1%{?dist}
 License:	BSD
-Source0:	https://github.com/EnterpriseDB/%{sname}/archive/v%{version}.tar.gz
+Source0:	%{sname}-%{version}.tar.gz
 URL:		https://github.com/EnterpriseDB/%{sname}
 BuildRequires:	postgresql%{pgmajorversion}-devel
 BuildRequires:	libxml2-devel java-devel javapackages-tools
@@ -26,12 +26,15 @@ Requires:	advance-toolchain-%{atstring}-runtime
 BuildRequires:	advance-toolchain-%{atstring}-devel
 %endif
 
+BuildRequires:	clang
+
 %description
 This PostgreSQL extension implements a Foreign Data Wrapper (FDW) for
 the hdfs.
 
 %prep
-%setup -q -n %{sname}-%{version}
+#%setup -q -n %{sname}-%{version}
+%setup -c %{sname}-%{version}
 
 %build
 %ifarch ppc64 ppc64le
