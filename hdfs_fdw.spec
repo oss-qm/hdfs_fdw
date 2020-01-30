@@ -26,14 +26,11 @@ Requires:	advance-toolchain-%{atstring}-runtime
 BuildRequires:	advance-toolchain-%{atstring}-devel
 %endif
 
-BuildRequires:	clang
-
 %description
 This PostgreSQL extension implements a Foreign Data Wrapper (FDW) for
 the hdfs.
 
 %prep
-#%setup -q -n %{sname}-%{version}
 %setup -c %{sname}-%{version}
 
 %build
